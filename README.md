@@ -28,7 +28,7 @@ This repository contains the instructions, requirements, and starter code for St
 - Show off your understanding of basic data structures: [**arrays**](https://www.w3schools.com/js/js_arrays.asp) and [**objects**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects).
 - Display a **substantial amount of interesting data** in a "catalog". You can look online for datasets or create your own. Make sure you import the data yourself and are not fetching an API.
   - Your data should be easy to find in your source code—either in variables at the top of `scripts.js` or imported from a file.
-- Include **two or more features** that **operate** on your data and modify how it's displayed. Examples of features that operate on your data are:
+- Include **two or more features** that **operate** on your data and modify how the data is displayed. Examples of features that operate on your data are:
   - Filtering
   - Searching
   - Sorting
