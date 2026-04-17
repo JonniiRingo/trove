@@ -1,37 +1,40 @@
-<!doctype html>
-<html>
-  <head>
-    <title>TROVE.COM | Curated Art</title>
-    <meta name="description" content="Rare Treasures, Refined Tastes." />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trove | Rare Treasures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">TROVE.COM</h1>
-      <p class="subtitle">RARE TREASURES, REFINED TASTES.</p>
-    </header>
-    
-    <div id="card-container"></div>
-    
-    <div class="card" style="display: none">
-      <div class="card-image-wrapper">
-        <img src="" alt="Artwork" />
-      </div>
-      <div class="card-content">
-        <h2>Artwork Title</h2>
-        <p class="artist-name">Artist Name</p>
-        <div class="card-details">
-          <span class="category-tag">Category</span>
-          <span class="price-tag">$0.00</span>
+    <header class="hero-section">
+        <div class="hero-overlay">
+            <h1 class="title">TROVE.COM</h1>
+            <p class="subtitle">Rare Treasures, Refined Tastes.</p>
+            <p class="hero-description">Discover and auction remarkable second-hand and production prints.</p>
         </div>
-      </div>
-    </div>
+    </header>
 
-    <div class="footer">
-      <button onclick="quoteAlert()">Get A Quote!</button>
-      <button onclick="removeLastCard()">Remove A Card!</button>
-    </div>
-  </body>
+    <main class="spa-stage">
+        
+        <section id="gallery-view">
+            <div id="card-container">
+                </div>
+            
+            <div class="footer">
+                <button>Load More</button>
+            </div>
+        </section>
+
+        <section id="detail-view" style="display: none;">
+            <div class="detail-container">
+                <button id="back-btn" onclick="hideDetailView()">← Back to Showroom</button>
+                </div>
+        </section>
+
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
 </html>

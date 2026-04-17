@@ -5,6 +5,7 @@ html, body {
   background-color: #0a0a0a; /* Deep near-black from your mockup */
   color: #e0e0e0;
   font-family: "Helvetica", Arial, sans-serif;
+  background-image: url('./assets/Trove_background.png');
 }
 
 /* --- HEADER --- */
@@ -139,3 +140,5 @@ button:hover {
   background-color: #e0e0e0;
   color: #000;
 }
+
+
