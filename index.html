@@ -34,13 +34,24 @@
         </div>
     </section>
 
-    <main class="gallery spa-stage" id="gallery-view">
-        <section id="showroom-state">
-            <div id="card-container">
+    <section id="showroom-state">
+            <div id="card-container" class="card-grid">
+                
+                <div class="card" style="display: none;">
+                    <img src="" alt="" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-title"></h2>
+                        <p class="artist-name"></p>
+                        <p class="price-tag"></p>
+                    </div>
                 </div>
-            <div class="footer">
-                <button>Load More</button>
+
             </div>
+            
+            <footer class="footer">
+                <button id="load-more-btn" class="trove-btn">Load More</button>
+                <div class="footer-brand">TROVE.COM &copy; 2026</div>
+            </footer>
         </section>
 
         <section id="detail-view" style="display: none;">
