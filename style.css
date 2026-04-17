@@ -108,9 +108,8 @@ html, body {
 
 .about-content {
   max-width: 800px;
-  text-align: center;
   padding: 60px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 9);
+
 }
 
 .about-title {
@@ -119,6 +118,7 @@ html, body {
   letter-spacing: 4px;
   margin-bottom: 30px;
   color: #ffffff;
+  text-align: center;
 }
 
 .about-text {
