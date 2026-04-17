@@ -9,25 +9,33 @@
 <body>
 
     <nav class="nav-bar">
-        <div class="nav-logo">TROVE</div>
+        <a href="#hero" class="nav-logo">TROVE</a>
         <div class="nav-links">
-            <a href="#gallery-view">Shop</a>
+            <a href="#about">About</a>
+            <a href="#gallery-view">Showroom</a>
         </div>
     </nav>
 
-    <header class="hero-section">
+    <section id="hero" class="hero-section">
         <div class="hero-overlay">
             <h1 class="title">RARE TREASURES, REFINE TASTE.</h1>
             <p class="hero-description">Discover and auction remarkable second-hand and production prints.</p>
         </div>
-    </header>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">TROVE.COM</h2>
+            <p class="about-text">
+                Trove.com is the curated gateway into a world of refined art collecting, showcasing and auctioning remarkable second-hand and production prints. A perfect starting point for aspiring collectors, making fine art accessible at attainable values for the tasteful collector seeking to enhance their spaces.
+            </p>
+        </div>
+    </section>
 
     <main class="gallery spa-stage" id="gallery-view">
-        
         <section id="showroom-state">
             <div id="card-container">
                 </div>
-            
             <div class="footer">
                 <button>Load More</button>
             </div>
@@ -38,7 +46,6 @@
                 <button id="back-btn" onclick="hideDetailView()">← Back to Showroom</button>
             </div>
         </section>
-
     </main>
 
     <script src="scripts.js"></script>

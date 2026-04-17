@@ -1,5 +1,4 @@
 /* --- BASE RESET --- */
-/* --- BASE RESET --- */
 html, body {
   margin: 0;
   padding: 0;
@@ -24,9 +23,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000; /* Forces nav to stay above the hero image */
-  
-  /* Glassmorphism execution */
+  z-index: 1000;
   background: rgba(10, 10, 10, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -39,7 +36,15 @@ html, body {
   font-size: 20px;
   letter-spacing: 6px;
   color: #ffffff;
+  text-decoration: none; /* Required for anchor state */
+  transition: opacity 0.3s ease;
 }
+
+.nav-logo:hover {
+  opacity: 0.7;
+}
+
+
 
 .nav-links a {
   color: #e0e0e0;
@@ -93,7 +98,38 @@ html, body {
   text-shadow: 0px 2px 10px rgba(0,0,0,0.9);
 }
 
-/* --- 3. THE GALLERY & 4. FOOTER BASE --- */
+/* --- 3. ABOUT SECTION --- */
+.about-section {
+  padding: 120px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-content {
+  max-width: 800px;
+  text-align: center;
+  padding: 60px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 9);
+}
+
+.about-title {
+  font-family: "Georgia", serif;
+  font-size: 1.5em;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.about-text {
+  font-family: "Georgia", serif;
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #c0c0c0;
+  font-style: italic;
+}
+
+/* --- 4. THE GALLERY & 4. FOOTER BASE --- */
 .gallery {
   padding: 60px 20px;
   min-height: 100vh; /* Ensures the void takes up at least one screen */
