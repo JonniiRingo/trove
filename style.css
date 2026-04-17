@@ -176,3 +176,20 @@ html, body {
     backdrop-filter: blur(6px);
   }
 }
+
+.title, .about-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.hero-description, .about-text, .artist-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.2rem; /* Adjusted for Cormorant scale */
+}
+
+.about-text {
+  font-style: italic;
+  line-height: 1.8;
+}
