@@ -64,16 +64,15 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
   
   background-image: url('./assets/Trove_background.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Creates parallax scroll */
+  background-attachment: fixed;
 }
 
 .hero-overlay {
-  background: linear-gradient(to top, rgba(10,10,10,0.8), transparent);
   padding: 40px;
   border-radius: 10px;
 }
