@@ -153,8 +153,8 @@ body {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 10, 10, 1) 10%,
-    rgba(10, 10, 10, 0) 90%
+    rgba(10, 10, 10, 1) 55%,
+    rgba(10, 10, 10, 0) 95%
   );
   pointer-events: none;
   animation: rise-from-below 8s ease-in-out infinite;
