@@ -1,66 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trove | Rare Treasures</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trove | Rare Treasures</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@400&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
 </head>
 <body>
 
-    <nav class="nav-bar">
-        <a href="#hero" class="nav-logo">TROVE</a>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#gallery-view">Showroom</a>
-        </div>
-    </nav>
+  <!-- NAVIGATION -->
+  <nav class="nav-bar">
+    <a href="#hero" class="nav-logo">TROVE</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#gallery-view">Showroom</a>
+    </div>
+  </nav>
 
-    <section id="hero" class="hero-section">
-        <div class="hero-overlay">
-            <h1 class="title">RARE TREASURES, REFINE TASTE.</h1>
-            <p class="hero-description">Discover and auction remarkable second-hand and production prints.</p>
-        </div>
-    </section>
+  <!-- HERO -->
+  <section id="hero" class="hero-section">
+    <div class="hero-overlay">
+      <h1 class="title">RARE TREASURES,<br>REFINED TASTE.</h1>
+      <p class="hero-description">Discover and auction remarkable second-hand and production prints.</p>
+    </div>
+  </section>
 
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <h2 class="about-title">TROVE.COM</h2>
-            <p class="about-text">
-                Trove.com is the curated gateway into a world of refined art collecting, showcasing and auctioning remarkable second-hand and production prints. A perfect starting point for aspiring collectors, making fine art accessible at attainable values for the tasteful collector seeking to enhance their spaces.
-            </p>
-        </div>
-    </section>
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-content">
+      <h2 class="about-title">TROVE.COM</h2>
+      <p class="about-text">
+        Trove.com is the curated gateway into a world of refined art collecting,
+        showcasing and auctioning remarkable second-hand and production prints.
+        A perfect starting point for aspiring collectors — making fine art
+        accessible at attainable values for the tasteful collector seeking to
+        enhance their spaces.
+      </p>
+    </div>
+  </section>
 
-    <section id="showroom-state">
-            <div id="card-container" class="card-grid">
-                
-                <div class="card" style="display: none;">
-                    <img src="" alt="" class="card-image">
-                    <div class="card-content">
-                        <h2 class="card-title"></h2>
-                        <p class="artist-name"></p>
-                        <p class="price-tag"></p>
-                    </div>
-                </div>
+  <!-- GALLERY / SHOWROOM -->
+  <main id="gallery-view" class="gallery">
 
-            </div>
-            
-            <footer class="footer">
-                <button id="load-more-btn" class="trove-btn">Load More</button>
-                <div class="footer-brand">TROVE.COM &copy; 2026</div>
-            </footer>
-        </section>
+    <!-- Controls: Search + Sort -->
+    <div class="controls">
+      <input
+        id="search-input"
+        class="control-input"
+        type="text"
+        placeholder="Search by title or artist…"
+      >
+      <select id="sort-select" class="control-select">
+        <option value="default">Sort</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+      </select>
+    </div>
 
-        <section id="detail-view" style="display: none;">
-            <div class="detail-container">
-                <button id="back-btn" onclick="hideDetailView()">← Back to Showroom</button>
-            </div>
-        </section>
-    </main>
+    <!-- Card grid — populated by scripts.js -->
+    <div id="card-container" class="card-grid"></div>
 
-    <script src="scripts.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-brand">TROVE.COM &copy; 2026</div>
+    </footer>
+
+  </main>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

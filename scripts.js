@@ -1,97 +1,186 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- *
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your
- *    browser and make sure you can see that change.
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- *
- */
+// ─────────────────────────────────────────────
+//  TROVE — Data Catalog  |  SEA Stage 2
+// ─────────────────────────────────────────────
 
-const painting_1 =
-  "/assets/painting1.jpg;
-const painting_2 =
-  "trove/assets/painting2.jpg";
-const painting_3 =
-  "trove/assets/painting3.jpg";
-
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
+// Array of artwork objects — the catalog data.
+// Each object shares the same keys so the render
+// function can work generically on any entry.
+const artworks = [
+  {
+    title: "Frost Eve",
+    artist: "Clara Novak",
+    medium: "Oil on Canvas",
+    year: 2019,
+    price: 240,
+    image: "./assets/painting1.jpg",
+  },
+  {
+    title: "Frost Day",
+    artist: "Clara Novak",
+    medium: "Acrylic on Board",
+    year: 2020,
+    price: 180,
+    image: "./assets/painting2.jpg",
+  },
+  {
+    title: "Frost Glow",
+    artist: "Clara Novak",
+    medium: "Watercolor",
+    year: 2021,
+    price: 310,
+    image: "./assets/painting3.jpg",
+  },
+  {
+    title: "Amber Quiet",
+    artist: "Rémi Faure",
+    medium: "Oil on Linen",
+    year: 2018,
+    price: 520,
+    image: "./assets/painting1.jpg",   // swap for real image later
+  },
+  {
+    title: "Dusk Study No. 4",
+    artist: "Rémi Faure",
+    medium: "Pastel on Paper",
+    year: 2022,
+    price: 95,
+    image: "./assets/painting2.jpg",
+  },
+  {
+    title: "Velvet Hour",
+    artist: "Mia Strand",
+    medium: "Encaustic",
+    year: 2023,
+    price: 750,
+    image: "./assets/painting3.jpg",
+  },
 ];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
 
-// This function adds cards the page to display the data in the array
-function showCards() {
+// ─────────────────────────────────────────────
+//  State — what is currently being displayed
+// ─────────────────────────────────────────────
+
+let displayedArtworks = [...artworks]; // starts as a copy of the full list
+
+// ─────────────────────────────────────────────
+//  Feature 1 — Search (filters by title or artist)
+// ─────────────────────────────────────────────
+
+function handleSearch(event) {
+  const query = event.target.value.toLowerCase().trim();
+
+  if (query === "") {
+    // Empty search → restore full list, then re-apply any active sort
+    displayedArtworks = [...artworks];
+  } else {
+    displayedArtworks = artworks.filter(function (artwork) {
+      return (
+        artwork.title.toLowerCase().includes(query) ||
+        artwork.artist.toLowerCase().includes(query)
+      );
+    });
+  }
+
+  // Re-apply the current sort after filtering
+  applySortToDisplayed();
+  renderCards();
+}
+
+// ─────────────────────────────────────────────
+//  Feature 2 — Sort (by price low→high or high→low)
+// ─────────────────────────────────────────────
+
+function handleSort(event) {
+  applySortToDisplayed(event.target.value);
+  renderCards();
+}
+
+// Sorts `displayedArtworks` in-place.
+// Reads the select value if no argument is passed.
+function applySortToDisplayed(order) {
+  const sortSelect = document.getElementById("sort-select");
+  const activeOrder = order !== undefined ? order : sortSelect.value;
+
+  if (activeOrder === "price-asc") {
+    displayedArtworks.sort(function (a, b) {
+      return a.price - b.price;
+    });
+  } else if (activeOrder === "price-desc") {
+    displayedArtworks.sort(function (a, b) {
+      return b.price - a.price;
+    });
+  }
+  // "default" → no sort applied, order stays as-is
+}
+
+// ─────────────────────────────────────────────
+//  Render — builds cards from displayedArtworks
+// ─────────────────────────────────────────────
+
+function renderCards() {
   const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
+  cardContainer.innerHTML = ""; // clear existing cards
 
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
+  if (displayedArtworks.length === 0) {
+    cardContainer.innerHTML =
+      '<p class="no-results">No artworks match your search.</p>';
+    return;
+  }
 
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
-
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
+  for (let i = 0; i < displayedArtworks.length; i++) {
+    const artwork = displayedArtworks[i];
+    const card = buildCard(artwork);
+    cardContainer.appendChild(card);
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
+// Creates and returns a single card DOM element for an artwork object.
+function buildCard(artwork) {
+  const card = document.createElement("div");
+  card.className = "card";
 
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+  const img = document.createElement("img");
+  img.src = artwork.image;
+  img.alt = artwork.title;
+  img.className = "card-image";
 
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+  const content = document.createElement("div");
+  content.className = "card-content";
 
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
+  const title = document.createElement("h2");
+  title.className = "card-title";
+  title.textContent = artwork.title;
+
+  const artist = document.createElement("p");
+  artist.className = "artist-name";
+  artist.textContent = artwork.artist + " · " + artwork.year;
+
+  const price = document.createElement("p");
+  price.className = "price-tag";
+  price.textContent = "$" + artwork.price;
+
+  content.appendChild(title);
+  content.appendChild(artist);
+  content.appendChild(price);
+
+  card.appendChild(img);
+  card.appendChild(content);
+
+  return card;
 }
 
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+// ─────────────────────────────────────────────
+//  Init — wire up events and render on load
+// ─────────────────────────────────────────────
 
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!",
-  );
-}
+document.addEventListener("DOMContentLoaded", function () {
+  renderCards();
 
-function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
-}
+  document
+    .getElementById("search-input")
+    .addEventListener("input", handleSearch);
+
+  document
+    .getElementById("sort-select")
+    .addEventListener("change", handleSort);
+});

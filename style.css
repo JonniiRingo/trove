@@ -1,277 +1,379 @@
-/* --- BASE RESET --- */
-html, body {
+/* ─────────────────────────────────────────────
+   TROVE — style.css
+   ───────────────────────────────────────────── */
+
+/* --- RESET --- */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #0a0a0a;
-  color: #e0e0e0;
-  font-family: 'Inter', sans-serif;
-  scroll-behavior: smooth;
-
-  background-image: url('./assets/Trove_background.png');
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
-  background-attachment: fixed;
 }
 
-/* --- 1. NAVIGATION BAR --- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  background-image: url('./assets/Trove_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   NAVIGATION
+   ───────────────────────────────────────────── */
+
 .nav-bar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.4);
+  background: rgba(10, 10, 10, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  box-sizing: border-box;
 }
 
 .nav-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 6px;
   color: #ffffff;
-  text-decoration: none; /* Required for anchor state */
+  text-decoration: none;
   transition: opacity 0.3s ease;
 }
 
 .nav-logo:hover {
-  opacity: 0.7;
+  opacity: 0.6;
 }
-
-
 
 .nav-links a {
   color: #e0e0e0;
   text-decoration: none;
   margin-left: 30px;
   letter-spacing: 2px;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #d4af37; /* Muted Gold highlight */
+  color: #d4af37;
 }
 
-/* --- 2. HERO SECTION --- */
+/* ─────────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────────── */
+
 .hero-section {
-  position: relative;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: left;
-  
-  background-image: url('./assets/Trove_background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  justify-content: flex-start;
+  padding: 0 80px;
 }
 
 .hero-overlay {
-  padding: 40px;
-  border-radius: 10px;
+  max-width: 600px;
 }
 
 .title {
-  margin: 0;
-  font-size: 4em;
   font-family: 'Playfair Display', serif;
-  font-weight: normal;
-  letter-spacing: 8px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 6px;
   color: #ffffff;
-  text-shadow: 0px 4px 15px rgba(0,0,0,0.9);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
 }
 
-.subtitle, .hero-description {
+.hero-description {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1em;
-  line-height: 1.8;
-  color: #c0c0c0;
+  font-size: 1.1rem;
   font-style: italic;
+  color: #b0b0b0;
+  margin-top: 20px;
+  line-height: 1.7;
 }
 
-/* --- 3. ABOUT SECTION --- */
+/* ─────────────────────────────────────────────
+   ABOUT
+   ───────────────────────────────────────────── */
+
 .about-section {
-  padding: 120px 20px;
+  padding: 100px 40px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .about-content {
-  max-width: 800px;
-  padding: 60px;
-
+  max-width: 720px;
+  width: 100%;
+  text-align: center;
 }
 
 .about-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5em;
-  letter-spacing: 4px;
-  margin-bottom: 30px;
+  font-size: 1.3rem;
+  letter-spacing: 6px;
   color: #ffffff;
-  text-align: center;
+  margin-bottom: 24px;
 }
 
 .about-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1em;
-  line-height: 1.8;
-  color: #c0c0c0;
+  font-size: 1.15rem;
   font-style: italic;
+  line-height: 1.9;
+  color: #a0a0a0;
 }
 
-/* --- 4. THE GALLERY & 4. FOOTER BASE --- */
+/* ─────────────────────────────────────────────
+   GALLERY
+   ───────────────────────────────────────────── */
+
 .gallery {
-  padding: 60px 20px;
-  min-height: 100vh; /* Ensures the void takes up at least one screen */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 80px 40px 60px;
+  position: relative;
 }
 
-/* --- 6. HOLISTIC FOOTER --- */
+.gallery::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 1) 10%,
+    rgba(10, 10, 10, 0) 90%
+  );
+  pointer-events: none;
+  animation: rise-from-below 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Keep cards above the overlay */
+.controls,
+.card-grid,
 .footer {
-  margin-top: 80px;
-  padding: 40px 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 1;
 }
 
-.trove-btn {
-  background: transparent;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 12px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+@keyframes rise-from-below {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 1;   }
+  100% { opacity: 0.3; }
+}
+/* ─────────────────────────────────────────────
+   CONTROLS (Search + Sort)
+   ───────────────────────────────────────────── */
+
+.controls {
+  display: flex;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  flex-wrap: wrap;
+}
+
+.control-input,
+.control-select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.trove-btn:hover {
-  border-color: #d4af37;
-  color: #d4af37;
-  background: rgba(212, 175, 55, 0.1); /* Subtle gold glow on hover */
-}
-
-.footer-brand {
-  margin-top: 30px;
+  color: #e0e0e0;
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: #606060;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding: 10px 16px;
+  outline: none;
+  transition: border-color 0.25s ease;
 }
 
-/* --- THE PULSING BOKEH CARDS --- */
-.card {
-  width: 320px;
-  background-color: rgba(20, 20, 20, 0.65); 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  animation: pulse-alpha 6s ease-in-out infinite;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+.control-input {
+  flex: 1;
+  min-width: 200px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(212, 175, 55, 0.4); 
-  animation-play-state: paused; 
+.control-input::placeholder {
+  color: #505050;
 }
 
-@keyframes pulse-alpha {
-  0% {
-    background-color: rgba(20, 20, 20, 0.5);
-    backdrop-filter: blur(6px);
-  }
-  50% {
-    background-color: rgba(20, 20, 20, 0.85);
-    backdrop-filter: blur(12px);
-  }
-  100% {
-    background-color: rgba(20, 20, 20, 0.5);
-    backdrop-filter: blur(6px);
-  }
+.control-select {
+  cursor: pointer;
+  /* removes default arrow on some browsers, keeps it clean */
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23606060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
 }
 
-.title, .about-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  letter-spacing: 4px;
+.control-select option {
+  background: #1a1a1a;
+  color: #e0e0e0;
 }
 
-.hero-description, .about-text, .artist-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 1.2rem; /* Adjusted for Cormorant scale */
+.control-input:focus,
+.control-select:focus {
+  border-color: rgba(212, 175, 55, 0.5);
 }
 
-.about-text {
-  font-style: italic;
-  line-height: 1.8;
-}
+/* ─────────────────────────────────────────────
+   CARD GRID
+   ───────────────────────────────────────────── */
 
-/* --- 5. CARD GRID & INTERNALS --- */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* ─────────────────────────────────────────────
+   CARD — fixed height, no text growth
+   ───────────────────────────────────────────── */
+
+.card {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Fixed total card height — image + content */
+  height: 420px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  animation: pulse-alpha 7s ease-in-out infinite;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.35);
+  animation-play-state: paused;
+}
+
+@keyframes pulse-alpha {
+  0%   { background-color: rgba(18, 18, 18, 0.55); }
+  50%  { background-color: rgba(18, 18, 18, 0.85); }
+  100% { background-color: rgba(18, 18, 18, 0.55); }
+}
+
+/* Image takes fixed share of card height */
 .card-image {
   width: 100%;
-  height: 350px;
+  height: 280px;       /* fixed — never grows */
   object-fit: cover;
+  flex-shrink: 0;
+  display: block;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Content fills the remaining space */
 .card-content {
-  padding: 24px;
-  text-align: left;
+  flex: 1;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;    /* prevents any text blowout */
 }
 
 .card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5em;
-  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 400;
   color: #ffffff;
+  /* Clamp to one line — no card growth */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .artist-name {
   font-family: 'Inter', sans-serif;
-  font-size: 0.85em;
-  color: #a0a0a0;
-  margin: 0 0 15px 0;
+  font-size: 0.75rem;
+  color: #707070;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .price-tag {
   font-family: 'Playfair Display', serif;
-  font-size: 1.2em;
+  font-size: 1.1rem;
   color: #d4af37;
-  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   EMPTY STATE
+   ───────────────────────────────────────────── */
+
+.no-results {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #505050;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 60px 0;
+  grid-column: 1 / -1;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────── */
+
+.footer {
+  margin-top: 80px;
+  padding: 32px 0 20px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-brand {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #404040;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .nav-bar {
+    padding: 16px 20px;
+  }
+
+  .hero-section {
+    padding: 0 24px;
+  }
+
+  .about-section,
+  .gallery {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 }
