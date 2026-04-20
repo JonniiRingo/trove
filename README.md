@@ -41,31 +41,8 @@ This repository contains the instructions, requirements, and starter code for St
 - Be an **original** project. Please do not submit something previously created for a class, internship, or client.  
   You are encouraged to use online resources, but **make sure you understand every line of code** in your project.
 
----
 
-## 🛠️ Getting Started
 
-1. [**Create a GitHub account**](https://github.com/) if you haven't already.
-2. Click the blue **"Use as Template"** button in the upper right corner, then choose **"Create a new repository"**:  
-   <img height="300" alt="Screenshot of catalog example" src="./assets/templateArrow.png">
-   Then :
-
-   2a. Choose yourself as the owner (aka your github account)
-   <br>
-   2b. Give your repository a name
-   <br>
-   2c. Click **"Create Repository"**
-
-3. Copy or download the files to your own computer.
-4. Open and edit the code using a text editor or an IDE, a popular IDE is [vsCode](https://code.visualstudio.com/):
-   - Take your time and read the files, read the comments as they are intended to guide you!
-   - Modify `index.html`, `style.css`, and `scripts.js`.
-   - To preview, open `index.html` in a web browser (double-click it).
-   - You should see something like this:
-
-<img  alt="Screenshot of use template button location" src="https://github.com/Snap-Engineering-Academy-2023/rn_lab1/assets/7607483/fdd57236-50fe-48ca-956d-d9b4b12db038">
-
----
 
 ## 🚀 Submitting
 

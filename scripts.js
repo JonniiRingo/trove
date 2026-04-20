@@ -1,10 +1,31 @@
-// ─────────────────────────────────────────────
-//  TROVE — Data Catalog  |  SEA Stage 2
-// ─────────────────────────────────────────────
+/**
+ * Data Catalog Project Starter Code - SEA Stage 2
+ *
+ * This file is where you should be doing most of your work. You should
+ * also make changes to the HTML and CSS files, but we want you to prioritize
+ * demonstrating your understanding of data structures, and you'll do that
+ * with the JavaScript code you write in this file.
+ *
+ * The comments in this file are only to help you learn how the starter code
+ * works. The instructions for the project are in the README. That said, here
+ * are the three things you should do first to learn about the starter code:
+ * - 1 - Change something small in index.html or style.css, then reload your
+ *    browser and make sure you can see that change.
+ * - 2 - On your browser, right click anywhere on the page and select
+ *    "Inspect" to open the browser developer tools. Then, go to the "console"
+ *    tab in the new window that opened up. This console is where you will see
+ *    JavaScript errors and logs, which is extremely helpful for debugging.
+ *    (These instructions assume you're using Chrome, opening developer tools
+ *    may be different on other browsers. We suggest using Chrome.)
+ * - 3 - Add another object to the artworks array a few lines down. Reload your
+ *    browser and observe what happens. You should see a new card appear.
+ *
+ */
 
-// Array of artwork objects — the catalog data.
-// Each object shares the same keys so the render
-// function can work generically on any entry.
+// This is an array of objects. Each object represents one artwork
+// and holds all the data for that piece.
+// Your final submission should have much more data than this!
+
 const artworks = [
   {
     title: "Frost Eve",
@@ -56,131 +77,84 @@ const artworks = [
   },
 ];
 
-// ─────────────────────────────────────────────
-//  State — what is currently being displayed
-// ─────────────────────────────────────────────
-
-let displayedArtworks = [...artworks]; // starts as a copy of the full list
-
-// ─────────────────────────────────────────────
-//  Feature 1 — Search (filters by title or artist)
-// ─────────────────────────────────────────────
-
-function handleSearch(event) {
-  const query = event.target.value.toLowerCase().trim();
-
-  if (query === "") {
-    // Empty search → restore full list, then re-apply any active sort
-    displayedArtworks = [...artworks];
-  } else {
-    displayedArtworks = artworks.filter(function (artwork) {
-      return (
-        artwork.title.toLowerCase().includes(query) ||
-        artwork.artist.toLowerCase().includes(query)
-      );
-    });
-  }
-
-  // Re-apply the current sort after filtering
-  applySortToDisplayed();
-  renderCards();
-}
-
-// ─────────────────────────────────────────────
-//  Feature 2 — Sort (by price low→high or high→low)
-// ─────────────────────────────────────────────
-
-function handleSort(event) {
-  applySortToDisplayed(event.target.value);
-  renderCards();
-}
-
-// Sorts `displayedArtworks` in-place.
-// Reads the select value if no argument is passed.
-function applySortToDisplayed(order) {
-  const sortSelect = document.getElementById("sort-select");
-  const activeOrder = order !== undefined ? order : sortSelect.value;
-
-  if (activeOrder === "price-asc") {
-    displayedArtworks.sort(function (a, b) {
-      return a.price - b.price;
-    });
-  } else if (activeOrder === "price-desc") {
-    displayedArtworks.sort(function (a, b) {
-      return b.price - a.price;
-    });
-  }
-  // "default" → no sort applied, order stays as-is
-}
-
-// ─────────────────────────────────────────────
-//  Render — builds cards from displayedArtworks
-// ─────────────────────────────────────────────
-
-function renderCards() {
+// This function adds cards to the page to display the data in the array
+function showCards() {
   const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = ""; // clear existing cards
+  cardContainer.innerHTML = "";
+  const templateCard = document.querySelector(".card");
 
-  if (displayedArtworks.length === 0) {
-    cardContainer.innerHTML =
-      '<p class="no-results">No artworks match your search.</p>';
-    return;
-  }
+  for (let i = 0; i < artworks.length; i++) {
+    const artwork = artworks[i];
 
-  for (let i = 0; i < displayedArtworks.length; i++) {
-    const artwork = displayedArtworks[i];
-    const card = buildCard(artwork);
-    cardContainer.appendChild(card);
+    const nextCard = templateCard.cloneNode(true); // Copy the template card
+    editCardContent(nextCard, artwork);            // Edit card content
+    cardContainer.appendChild(nextCard);           // Add new card to the container
   }
 }
 
-// Creates and returns a single card DOM element for an artwork object.
-function buildCard(artwork) {
-  const card = document.createElement("div");
-  card.className = "card";
+function editCardContent(card, artwork) {
+  card.style.display = "flex";
 
-  const img = document.createElement("img");
-  img.src = artwork.image;
-  img.alt = artwork.title;
-  img.className = "card-image";
+  const cardTitle = card.querySelector(".card-title");
+  cardTitle.textContent = artwork.title;
 
-  const content = document.createElement("div");
-  content.className = "card-content";
+  const cardArtist = card.querySelector(".artist-name");
+  cardArtist.textContent = artwork.artist;
 
-  const title = document.createElement("h2");
-  title.className = "card-title";
-  title.textContent = artwork.title;
+  const cardPrice = card.querySelector(".price-tag");
+  cardPrice.textContent = "$" + artwork.price;
 
-  const artist = document.createElement("p");
-  artist.className = "artist-name";
-  artist.textContent = artwork.artist + " · " + artwork.year;
+  const cardImage = card.querySelector(".card-image");
+  cardImage.src = artwork.image;
+  cardImage.alt = artwork.title;
 
-  const price = document.createElement("p");
-  price.className = "price-tag";
-  price.textContent = "$" + artwork.price;
-
-  content.appendChild(title);
-  content.appendChild(artist);
-  content.appendChild(price);
-
-  card.appendChild(img);
-  card.appendChild(content);
-
-  return card;
+  // You can use console.log to help you debug!
+  // View the output by right clicking on your website,
+  // select "Inspect", then click on the "Console" tab
+  console.log("new card:", artwork.title, "- html:", card);
 }
 
-// ─────────────────────────────────────────────
-//  Init — wire up events and render on load
-// ─────────────────────────────────────────────
+// This calls the showCards() function when the page is first loaded
+document.addEventListener("DOMContentLoaded", function (){
+  showCards();
 
-document.addEventListener("DOMContentLoaded", function () {
-  renderCards();
-
-  document
-    .getElementById("search-input")
-    .addEventListener("input", handleSearch);
-
-  document
-    .getElementById("sort-select")
-    .addEventListener("change", handleSort);
+  document.getElementById("search-input").addEventListener("input", search);
+  document.getElementById("sort-select").addEventListener("change", sort);
 });
+
+function compareAsc(a, b){
+  return a.price - b.price
+}
+
+function compareDesc(a, b){
+  return b.price - a.price
+}
+
+
+
+function sort() {
+  const order = document.getElementById("sort-select").value;
+
+  if(order === "price-asc"){
+    artworks.sort(compareAsc); // Sorts the artworks array in ascending order
+  } else if (order === "price-desc"){
+    artworks.sort(compareDesc); // Sorts the artworks array in descending order
+  }
+  showCards();    // Call showCards again to refresh
+}
+
+
+
+function search() {
+  // coming soon
+}
+
+// How to sort
+// let vals = [5,4,9,2,1];
+// console.log(vales)
+
+// vals.sort(compare);
+// console.log(values);
+
+
+// How to filter

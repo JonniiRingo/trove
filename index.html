@@ -46,6 +46,7 @@
       </p>
     </div>
   </section>
+  
 
   <!-- GALLERY / SHOWROOM -->
   <main id="gallery-view" class="gallery">
@@ -63,6 +64,16 @@
         <option value="price-asc">Price: Low → High</option>
         <option value="price-desc">Price: High → Low</option>
       </select>
+    </div>
+
+    <!-- Hidden template card — must stay OUTSIDE the container -->
+    <div class="card" style="display: none;">
+      <img src="" alt="" class="card-image">
+      <div class="card-content">
+        <h2 class="card-title"></h2>
+        <p class="artist-name"></p>
+        <p class="price-tag"></p>
+      </div>
     </div>
 
     <!-- Card grid — populated by scripts.js -->
