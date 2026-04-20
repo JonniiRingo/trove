@@ -122,20 +122,22 @@ document.addEventListener("DOMContentLoaded", function (){
   document.getElementById("sort-select").addEventListener("change", sort);
 });
 
-function sort() {
+function compare(a, b){
+  return a.price - b.price
+}
+
+
+function sort(compare) {
   const order = document.getElementById("sort-select").value;
 
   if(orer === "price-asc"){
-    artworks.sort(); // Sorts the artworks array
+    artworks.sort(    ); // Sorts the artworks array
   } else if (order === "price-desc"){
-    artworks.sort(); // Sorts the artworks array
+    artworks.sort(    ); // Sorts the artworks array
   }
   showCards();    // Call showCards again to refresh
 }
 
-// function compare(a, b){
-//   return a.y - b.y
-// }
 
 // let vals = [5,4,9,2,1];
 // console.log(vales)
