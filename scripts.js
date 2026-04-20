@@ -146,7 +146,10 @@ function sort() {
 
 
 function search() {
-  // coming soon
+  const search = document.getElementById("search-input").value.toLowercase();
+  results = artworks.filter( each artwork =>
+    artwork.title.toLowercase().includes(search) || artwork.artist.toLowercase().includes(search)
+  )
 }
 
 // How to sort
@@ -156,5 +159,6 @@ function search() {
 // vals.sort(compare);
 // console.log(values);
 
+// vals.filter(x => x);
 
-// How to filter
+
