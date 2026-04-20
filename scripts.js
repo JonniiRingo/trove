@@ -143,6 +143,12 @@ function sort() {
   showCards();    // Call showCards again to refresh
 }
 
+
+
+function search() {
+  // coming soon
+}
+
 // How to sort
 // let vals = [5,4,9,2,1];
 // console.log(vales)
