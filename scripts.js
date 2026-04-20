@@ -78,13 +78,13 @@ const artworks = [
 ];
 
 // This function adds cards to the page to display the data in the array
-function showCards() {
+function showCards(list) {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < artworks.length; i++) {
-    const artwork = artworks[i];
+  for (let i = 0; i < list.length; i++) {
+    const artwork = list[i];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, artwork);            // Edit card content
@@ -116,7 +116,7 @@ function editCardContent(card, artwork) {
 
 // This calls the showCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", function (){
-  showCards();
+  showCards(artworks);
 
   document.getElementById("search-input").addEventListener("input", search);
   document.getElementById("sort-select").addEventListener("change", sort);
@@ -140,13 +140,17 @@ function sort() {
   } else if (order === "price-desc"){
     artworks.sort(compareDesc); // Sorts the artworks array in descending order
   }
-  showCards();    // Call showCards again to refresh
+  showCards(artworks);    // Call showCards again to refresh
 }
 
 
 
 function search() {
-  // coming soon
+  const search = document.getElementById("search-input").value.toLowerCase();
+  const results = artworks.filter( artwork =>
+    artwork.title.toLowerCase().includes(search) || artwork.artist.toLowerCase().includes(search)
+  )
+  showCards(results);
 }
 
 // How to sort
@@ -156,5 +160,6 @@ function search() {
 // vals.sort(compare);
 // console.log(values);
 
+// vals.filter(x => x);
 
-// How to filter
+
