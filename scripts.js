@@ -28,53 +28,133 @@
 
 const artworks = [
   {
-    title: "Frost Eve",
-    artist: "Clara Novak",
+    title: "Cottage for Helen",
+    artist: "Olen",
     medium: "Oil on Canvas",
-    year: 2019,
-    price: 240,
-    image: "./assets/painting1.jpg",
+    year: 1985,
+    price: 320,
+    image: "./assets/photo1.jpeg"
   },
   {
-    title: "Frost Day",
-    artist: "Clara Novak",
-    medium: "Acrylic on Board",
-    year: 2020,
-    price: 180,
-    image: "./assets/painting2.jpg",
+    title: "River Baptism",
+    artist: "Nicasio",
+    medium: "Oil on Canvas",
+    year: 1975,
+    price: 285,
+    image: "./assets/photo2.jpeg"
   },
   {
-    title: "Frost Glow",
-    artist: "Clara Novak",
-    medium: "Watercolor",
-    year: 2021,
+    title: "Azure Floral with Butterfly",
+    artist: "Langley",
+    medium: "Oil on Canvas",
+    year: 1982,
+    price: 195,
+    image: "./assets/photo3.jpeg"
+  },
+  {
+    title: "Botanical Costume Illustration",
+    artist: "E. Lami",
+    medium: "Watercolor and Ink on Paper",
+    year: 1940,
+    price: 175,
+    image: "./assets/photo4.jpeg"
+  },
+  {
+    title: "Spring Visitor (American Robin)",
+    artist: "J. L. Thompson", 
+    medium: "Oil on Canvas",
+    year: 1982,
     price: 310,
-    image: "./assets/painting3.jpg",
+    image: "./assets/photo5.jpeg"
   },
   {
-    title: "Amber Quiet",
-    artist: "Rémi Faure",
-    medium: "Oil on Linen",
-    year: 2018,
-    price: 520,
-    image: "./assets/painting1.jpg",   // swap for real image later
+    title: "Bavarian Winter Twilight",
+    artist: "M. Collingwood",
+    medium: "Watercolor on Paper",
+    year: 1968,
+    price: 185,
+    image: "./assets/photo6.jpeg"
   },
   {
-    title: "Dusk Study No. 4",
-    artist: "Rémi Faure",
-    medium: "Pastel on Paper",
-    year: 2022,
+    title: "Saloon Toast",
+    artist: "Jack Roberts",
+    medium: "Vintage Lithograph Print",
+    year: 1967,
     price: 95,
-    image: "./assets/painting2.jpg",
+    image: "./assets/photo7.jpeg"
   },
   {
-    title: "Velvet Hour",
-    artist: "Mia Strand",
-    medium: "Encaustic",
-    year: 2023,
-    price: 750,
-    image: "./assets/painting3.jpg",
+    title: "Edgar Allen Paw",
+    artist: "Augustine",
+    medium: "Acrylic on Board",
+    year: 1995,
+    price: 85,
+    image: "./assets/photo8.jpeg"
   },
+  {
+    title: "Birch River Mist",
+    artist: "Moncrief",
+    medium: "Oil on Canvas",
+    year: 1972,
+    price: 145,
+    image: "./assets/photo9.jpeg"
+  },
+  {
+    title: "50th Anniversary Duck Stamp",
+    artist: "William C. Morris",
+    medium: "Commemorative Poster",
+    year: 1984,
+    price: 85,
+    image: "./assets/photo10.jpeg"
+  },
+  {
+    title: "Alpine Impasto",
+    artist: "Alpine School",
+    medium: "Oil on Canvas",
+    year: 1960,
+    price: 165,
+    image: "./assets/photo11.jpeg"
+  },
+  {
+    title: "Where Wild Flowers Grow",
+    artist: "Murray",
+    medium: "Artist Proof Lithograph (A/P 3/50)",
+    year: 1992,
+    price: 120,
+    image: "./assets/photo12.jpeg"
+  },
+  {
+    title: "Sanctuary Courtyard",
+    artist: "Birkenstock",
+    medium: "Decorative Lithograph",
+    year: 1994,
+    price: 75,
+    image: "./assets/photo13.jpeg"
+  },
+  {
+    title: "The Hollyhock Garden",
+    artist: "Decorative Impressionist",
+    medium: "Framed Lithograph",
+    year: 1988,
+    price: 110,
+    image: "./assets/photo14.jpeg"
+  },
+  {
+    title: "Rajput Royal Procession",
+    artist: "Traditional Indian School",
+    medium: "Gouache on Silk",
+    year: 1975,
+    price: 155,
+    image: "./assets/photo15.jpeg"
+  },
+  {
+    title: "Autumn Stand",
+    artist: "JH",
+    medium: "Oil on Canvas Board",
+    year: 1975,
+    price: 85,
+    image: "./assets/photo16.jpeg"
+  }
 ];
 
 // This function adds cards to the page to display the data in the array
